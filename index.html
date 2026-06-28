@@ -1,0 +1,2247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Genius Library 2.0 | Self Learning Library in Bargadi, Lucknow</title>
+  <meta name="description" content="Genius Library 2.0 is a peaceful self-learning library in Bargadi Magath, Bakshi Ka Talab, Lucknow with fast WiFi, AC, clean washrooms, drinking water, lunch area and CCTV security." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      --bg: #F9F5F0;
+      --surface: #ffffff;
+      --surface-2: #fffaf3;
+      --text: #202020;
+      --muted: #6f675c;
+      --line: #e8ddcf;
+      --gold: #b4832f;
+      --gold-dark: #8a611d;
+      --brown: #3a2d20;
+      --green: #128c4a;
+      --danger: #b42318;
+      --shadow: 0 24px 70px rgba(62, 44, 25, .12);
+      --radius: 24px;
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+
+    .top-strip {
+      background: var(--brown);
+      color: #fff7ec;
+      font-size: 14px;
+      position: relative;
+      z-index: 40;
+    }
+
+    .top-strip .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding-top: 9px;
+      padding-bottom: 9px;
+      align-items: center;
+    }
+
+    .top-info,
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .top-strip i {
+      color: #eac16e;
+      margin-right: 6px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(249, 245, 240, .92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(232, 221, 207, .85);
+    }
+
+    .nav-inner {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: var(--brown);
+      color: #f7d384;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 30px rgba(58, 45, 32, .18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-mark:after {
+      content: "";
+      position: absolute;
+      inset: auto -20% -35% -20%;
+      height: 28px;
+      background: #c7953d;
+      transform: rotate(-8deg);
+    }
+
+    .brand-mark i {
+      position: relative;
+      z-index: 1;
+      font-size: 24px;
+    }
+
+    .brand-title {
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.05;
+      font-size: 19px;
+    }
+
+    .brand-sub {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-links a {
+      padding: 11px 13px;
+      border-radius: 999px;
+      color: #3d352c;
+      font-size: 14px;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: #efe2d0;
+      color: var(--gold-dark);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--brown);
+      color: #fff8eb;
+      box-shadow: 0 16px 34px rgba(58, 45, 32, .2);
+    }
+
+    .btn-primary:hover {
+      background: #241b13;
+      box-shadow: 0 20px 40px rgba(58, 45, 32, .26);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: white;
+      box-shadow: 0 16px 34px rgba(180, 131, 47, .24);
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-dark);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--brown);
+      border: 1px solid #d9c7ae;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      border-color: var(--gold);
+    }
+
+    .menu-btn {
+      width: 45px;
+      height: 45px;
+      border-radius: 14px;
+      border: 1px solid #dccdbb;
+      background: #fffaf3;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--brown);
+      font-size: 22px;
+    }
+
+    .mobile-menu {
+      display: none;
+      border-top: 1px solid var(--line);
+      padding: 10px 0 18px;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 13px 4px;
+      font-weight: 800;
+      color: #3d352c;
+      border-bottom: 1px solid #eee4d8;
+    }
+
+    .hero {
+      padding: 62px 0 46px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.04fr .96fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gold-dark);
+      background: #efe2d0;
+      border: 1px solid #e2cda9;
+      border-radius: 999px;
+      padding: 8px 13px;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.05;
+      color: #211a13;
+    }
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(46px, 7vw, 86px);
+      letter-spacing: -.055em;
+      max-width: 760px;
+    }
+
+    .stroke {
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--gold-dark);
+      text-stroke: 1.5px var(--gold-dark);
+    }
+
+    .hero-text {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 650px;
+      margin: 22px 0 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 32px;
+      max-width: 680px;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,.7);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 16px;
+    }
+
+    .stat-card strong {
+      display: block;
+      color: var(--brown);
+      font-size: 24px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-card span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .photo-shell {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 38px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .owner-photo {
+      aspect-ratio: 1 / 1;
+      border-radius: 32px;
+      overflow: hidden;
+      background: #312b26;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .owner-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(.18) contrast(1.04) saturate(.9);
+      transform: scale(1.01);
+    }
+
+    .fallback-photo {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 38px;
+      color: #ffe7b3;
+      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.09), transparent 35%),
+        #312b26;
+    }
+
+    .fallback-photo .avatar-icon {
+      font-size: 84px;
+      margin-bottom: 14px;
+      color: #d8ab55;
+    }
+
+    .fallback-photo b {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: 33px;
+      line-height: 1.05;
+      letter-spacing: -.04em;
+      color: #fff3db;
+    }
+
+    .fallback-photo small {
+      display: block;
+      color: #d7c3a0;
+      margin-top: 10px;
+      font-weight: 700;
+    }
+
+    .photo-caption {
+      position: absolute;
+      left: 34px;
+      right: 34px;
+      bottom: 34px;
+      background: rgba(255, 250, 243, .92);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(232, 221, 207, .9);
+      border-radius: 22px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 18px 36px rgba(38, 28, 17, .15);
+    }
+
+    .photo-caption b {
+      color: var(--brown);
+      display: block;
+      line-height: 1.15;
+    }
+
+    .photo-caption span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .open-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #e8f6ee;
+      color: #0f6f3c;
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .floating-card {
+      position: absolute;
+      top: 28px;
+      left: -24px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 15px 17px;
+      box-shadow: 0 18px 40px rgba(58,45,32,.14);
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      max-width: 230px;
+      animation: floatY 4s ease-in-out infinite;
+    }
+
+    .floating-card .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: #efe2d0;
+      color: var(--gold-dark);
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      flex: 0 0 auto;
+    }
+
+    .floating-card b {
+      display: block;
+      line-height: 1.15;
+    }
+
+    .floating-card span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    section {
+      padding: 76px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .section-head.center {
+      display: block;
+      text-align: center;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-head h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(34px, 4.4vw, 58px);
+      letter-spacing: -.045em;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 610px;
+      margin: 12px 0 0;
+      font-size: 17px;
+    }
+
+    .facilities {
+      background: #fffaf3;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .facility-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .facility-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px;
+      min-height: 190px;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+
+    .facility-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 44px rgba(62, 44, 25, .1);
+      border-color: #d2ad72;
+    }
+
+    .facility-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 17px;
+      background: #f1e4d1;
+      color: var(--gold-dark);
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+
+    .facility-card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .facility-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .about-card,
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 16px 48px rgba(62, 44, 25, .08);
+    }
+
+    .about-card {
+      padding: 30px;
+    }
+
+    .about-card h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 46px;
+      letter-spacing: -.04em;
+      margin-bottom: 16px;
+    }
+
+    .about-card p {
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .owner-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .owner-chip {
+      display: flex;
+      gap: 13px;
+      align-items: center;
+      padding: 14px;
+      border-radius: 18px;
+      background: #fffaf3;
+      border: 1px solid var(--line);
+    }
+
+    .owner-chip .mini-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--brown);
+      color: #f2c66e;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .owner-chip b {
+      display: block;
+      color: var(--brown);
+    }
+
+    .owner-chip span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .info-card {
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .info-panel {
+      padding: 28px;
+      border-right: 1px solid var(--line);
+    }
+
+    .info-panel:last-child {
+      border-right: 0;
+    }
+
+    .info-panel h3 {
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .detail-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: var(--muted);
+    }
+
+    .detail-item i {
+      width: 36px;
+      height: 36px;
+      border-radius: 13px;
+      background: #f1e4d1;
+      color: var(--gold-dark);
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+    }
+
+    .detail-item b {
+      color: var(--brown);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .pricing {
+      background: var(--brown);
+      color: #fff4df;
+      position: relative;
+    }
+
+    .pricing h2,
+    .pricing h3 {
+      color: #fff8ed;
+    }
+
+    .pricing .section-head p {
+      color: #d9c6aa;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .plan {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 28px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .plan.featured {
+      background: #fffaf3;
+      color: var(--text);
+      transform: translateY(-10px);
+      box-shadow: 0 26px 70px rgba(0,0,0,.18);
+    }
+
+    .plan.featured h3,
+    .plan.featured .price {
+      color: var(--brown);
+    }
+
+    .badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: var(--gold);
+      color: white;
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .plan h3 {
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+
+    .price {
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -.05em;
+      color: #ffe4ab;
+      margin-bottom: 7px;
+    }
+
+    .price small {
+      font-size: 15px;
+      letter-spacing: 0;
+      font-weight: 700;
+      color: currentColor;
+      opacity: .72;
+    }
+
+    .plan p {
+      color: inherit;
+      opacity: .74;
+      margin: 0 0 20px;
+    }
+
+    .plan ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      display: grid;
+      gap: 11px;
+    }
+
+    .plan li {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .plan li i {
+      color: #dfb15d;
+    }
+
+    .gallery-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .slider {
+      display: flex;
+      transition: transform .45s ease;
+    }
+
+    .slide {
+      min-width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 420px;
+    }
+
+    .slide-art {
+      background: #362b22;
+      display: grid;
+      place-items: center;
+      padding: 38px;
+      color: #f5cf81;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide-art:before {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border: 1px solid rgba(245,207,129,.32);
+      border-radius: 50%;
+    }
+
+    .slide-art i {
+      font-size: 110px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .slide-content {
+      padding: 46px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .slide-content h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 42px;
+      letter-spacing: -.04em;
+      margin-bottom: 12px;
+    }
+
+    .slide-content p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .slider-controls {
+      position: absolute;
+      right: 22px;
+      bottom: 22px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .circle-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid #dbc8ae;
+      background: #fffaf3;
+      color: var(--brown);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 20px;
+      transition: .2s ease;
+    }
+
+    .circle-btn:hover {
+      background: var(--brown);
+      color: #fff7e8;
+      transform: translateY(-2px);
+    }
+
+    .dots {
+      position: absolute;
+      left: 28px;
+      bottom: 31px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: 0;
+      background: #d8c3a6;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .dot.active {
+      background: var(--gold-dark);
+      width: 26px;
+      border-radius: 999px;
+    }
+
+    .reviews {
+      background: #fffaf3;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .review-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .stars {
+      color: #e0a525;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+
+    .review-card p {
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .reviewer span {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #efe2d0;
+      color: var(--gold-dark);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .reviewer b {
+      display: block;
+      color: var(--brown);
+    }
+
+    .reviewer small {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .faq-contact {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .faq-box,
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 16px 46px rgba(62,44,25,.08);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .faq-item:last-child {
+      border-bottom: 0;
+    }
+
+    .faq-q {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 18px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      font-weight: 900;
+      cursor: pointer;
+      color: var(--brown);
+      text-align: left;
+    }
+
+    .faq-q i {
+      transition: transform .2s ease;
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .25s ease;
+      color: var(--muted);
+    }
+
+    .faq-a p {
+      margin: 0 0 18px;
+    }
+
+    .faq-item.open .faq-q i {
+      transform: rotate(180deg);
+    }
+
+    .contact-box h2,
+    .faq-box h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 38px;
+      letter-spacing: -.04em;
+      margin-bottom: 12px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-weight: 800;
+      color: var(--brown);
+      font-size: 13px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid #dac8b1;
+      background: #fffaf3;
+      color: var(--text);
+      border-radius: 16px;
+      padding: 13px 14px;
+      outline: none;
+      transition: .2s ease;
+    }
+
+    textarea {
+      min-height: 112px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(180,131,47,.13);
+      background: #fff;
+    }
+
+    .error-text {
+      color: var(--danger);
+      font-size: 12px;
+      font-weight: 700;
+      display: none;
+    }
+
+    .field.error input,
+    .field.error textarea,
+    .field.error select {
+      border-color: var(--danger);
+    }
+
+    .field.error .error-text {
+      display: block;
+    }
+
+    .success-msg {
+      display: none;
+      margin-top: 14px;
+      padding: 13px 14px;
+      border-radius: 16px;
+      color: #0f6f3c;
+      background: #e8f6ee;
+      font-weight: 800;
+    }
+
+    .map-card {
+      margin-top: 24px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr .95fr;
+    }
+
+    .map-placeholder {
+      min-height: 330px;
+      background:
+        linear-gradient(90deg, rgba(255,250,243,.82) 1px, transparent 1px),
+        linear-gradient(rgba(255,250,243,.82) 1px, transparent 1px),
+        #d7c8b3;
+      background-size: 44px 44px;
+      display: grid;
+      place-items: center;
+      color: var(--brown);
+      position: relative;
+    }
+
+    .map-pin {
+      width: 82px;
+      height: 82px;
+      border-radius: 50% 50% 50% 8px;
+      background: var(--brown);
+      color: #f7d384;
+      transform: rotate(-45deg);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 24px 50px rgba(58,45,32,.28);
+    }
+
+    .map-pin i {
+      transform: rotate(45deg);
+      font-size: 34px;
+    }
+
+    .map-details {
+      padding: 30px;
+    }
+
+    .map-details h3 {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+
+    .footer {
+      background: #211a13;
+      color: #fff0d6;
+      padding: 46px 0 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      gap: 28px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(255,255,255,.13);
+    }
+
+    .footer h3 {
+      color: #fff7e8;
+      margin-bottom: 14px;
+    }
+
+    .footer p,
+    .footer a {
+      color: #d5c3a6;
+    }
+
+    .footer a:hover {
+      color: #f5cf81;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 22px;
+      color: #c6b18e;
+      font-size: 14px;
+    }
+
+    .floating-actions {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 55;
+      display: grid;
+      gap: 10px;
+    }
+
+    .float-action {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: 0;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: 0 14px 34px rgba(0,0,0,.18);
+      color: white;
+      font-size: 24px;
+      transition: .2s ease;
+    }
+
+    .float-action:hover {
+      transform: translateY(-3px) scale(1.03);
+    }
+
+    .whatsapp {
+      background: #25D366;
+    }
+
+    .call {
+      background: var(--brown);
+    }
+
+    .top-btn {
+      background: var(--gold);
+      display: none;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(33, 26, 19, .58);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    .modal {
+      width: min(540px, 100%);
+      background: var(--surface);
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      box-shadow: 0 30px 90px rgba(0,0,0,.28);
+      padding: 26px;
+      position: relative;
+      transform: translateY(10px);
+      animation: modalIn .22s ease forwards;
+    }
+
+    @keyframes modalIn {
+      to { transform: translateY(0); }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: #fffaf3;
+      cursor: pointer;
+      font-size: 20px;
+      color: var(--brown);
+    }
+
+    .modal h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 38px;
+      letter-spacing: -.04em;
+      margin-right: 48px;
+      margin-bottom: 10px;
+    }
+
+    .modal p {
+      color: var(--muted);
+      margin-top: 0;
+    }
+
+    @media (max-width: 1040px) {
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .menu-btn {
+        display: flex;
+      }
+
+      .mobile-menu.show {
+        display: block;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .faq-contact,
+      .map-card {
+        grid-template-columns: 1fr;
+      }
+
+      .facility-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .plans,
+      .review-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .plan.featured {
+        transform: none;
+      }
+
+      .info-card,
+      .slide {
+        grid-template-columns: 1fr;
+      }
+
+      .info-panel {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .info-panel:last-child {
+        border-bottom: 0;
+      }
+
+      .floating-card {
+        left: 12px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .top-strip .container {
+        align-items: flex-start;
+      }
+
+      .top-actions {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 38px;
+      }
+
+      .quick-stats,
+      .facility-grid,
+      .form-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .photo-caption {
+        left: 26px;
+        right: 26px;
+        bottom: 26px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .floating-card {
+        position: static;
+        margin-bottom: 12px;
+        max-width: none;
+        animation: none;
+      }
+
+      .photo-shell {
+        border-radius: 28px;
+        padding: 12px;
+      }
+
+      .owner-photo {
+        border-radius: 22px;
+      }
+
+      .slide-art {
+        min-height: 230px;
+      }
+
+      .slide-content {
+        padding: 32px 24px 84px;
+      }
+
+      .slider-controls {
+        right: 16px;
+        bottom: 16px;
+      }
+
+      .dots {
+        left: 20px;
+        bottom: 34px;
+      }
+
+      .footer-bottom {
+        display: block;
+      }
+
+      .floating-actions {
+        right: 12px;
+        bottom: 12px;
+      }
+
+      h1 {
+        font-size: 48px;
+      }
+
+      section {
+        padding: 58px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-strip">
+    <div class="container">
+      <div class="top-info">
+        <span><i class="bi bi-clock-fill"></i>Open 7 Days: 8:00 AM - 8:00 PM</span>
+        <span><i class="bi bi-geo-alt-fill"></i>Bargadi, Bakshi Ka Talab, Lucknow</span>
+      </div>
+      <div class="top-actions">
+        <a href="tel:+919792088457"><i class="bi bi-telephone-fill"></i>9792088457</a>
+        <a href="https://wa.me/919792088457" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i>WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="#home" aria-label="Genius Library 2.0 home">
+          <span class="brand-mark"><i class="bi bi-book-half"></i></span>
+          <span>
+            <span class="brand-title">Genius Library 2.0</span>
+            <span class="brand-sub">Self Learning Space</span>
+          </span>
+        </a>
+
+        <div class="nav-links" id="navLinks">
+          <a href="#home" class="active">Home</a>
+          <a href="#facilities">Facilities</a>
+          <a href="#about">Owners</a>
+          <a href="#plans">Seats</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="nav-cta">
+          <button class="btn btn-outline" type="button" data-open-modal><i class="bi bi-calendar-check"></i>Book Visit</button>
+          <a class="btn btn-primary" href="tel:+919792088457"><i class="bi bi-telephone"></i>Call Now</a>
+        </div>
+
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#home">Home</a>
+        <a href="#facilities">Facilities</a>
+        <a href="#about">Owners</a>
+        <a href="#plans">Seats</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+        <button class="btn btn-primary" type="button" data-open-modal style="width:100%; margin-top:14px;"><i class="bi bi-calendar-check"></i>Book a Visit</button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <span class="eyebrow"><i class="bi bi-stars"></i>Quiet. Clean. Focused.</span>
+            <h1>Best place for <span class="stroke">self study</span> in Bargadi.</h1>
+            <p class="hero-text">
+              Genius Library 2.0 is a comfortable self-learning library designed for students, aspirants and readers who need a peaceful, hygienic and secure environment to study every day.
+            </p>
+            <div class="hero-actions">
+              <button class="btn btn-gold" type="button" data-open-modal><i class="bi bi-person-check"></i>Enquire for Seat</button>
+              <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=JIO%20OFFICE%20AIRFORCE%20ROAD%20Bargadi%20Bakshi%20Ka%20Talab%20Lucknow%20226201" target="_blank" rel="noopener"><i class="bi bi-signpost-2"></i>Get Directions</a>
+            </div>
+
+            <div class="quick-stats" aria-label="Library highlights">
+              <div class="stat-card">
+                <strong>12 hrs</strong>
+                <span>Daily study time</span>
+              </div>
+              <div class="stat-card">
+                <strong>7 days</strong>
+                <span>Open every week</span>
+              </div>
+              <div class="stat-card">
+                <strong>24/7</strong>
+                <span>CCTV monitoring</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="floating-card">
+              <span class="icon"><i class="bi bi-wifi"></i></span>
+              <span>
+                <b>Fast WiFi + AC</b>
+                <span>Comfort for long study hours</span>
+              </span>
+            </div>
+
+            <div class="photo-shell">
+              <div class="owner-photo">
+                <img src="owner-photo.jpg" alt="Owners of Genius Library 2.0 - Aditya Singh Chauhan and Shubham Singh" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                <div class="fallback-photo" style="display:none;">
+                  <div>
+                    <i class="bi bi-people-fill avatar-icon"></i>
+                    <b>Aditya Singh Chauhan<br>& Shubham Singh</b>
+                    <small>Owners, Genius Library 2.0</small>
+                  </div>
+                </div>
+              </div>
+              <div class="photo-caption">
+                <span>
+                  <b>Owned by Aditya & Shubham</b>
+                  <span>Student-friendly study environment</span>
+                </span>
+                <span class="open-pill"><i class="bi bi-circle-fill"></i>Open Today</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="facilities" id="facilities">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow"><i class="bi bi-check2-circle"></i>Facilities</span>
+            <h2>Everything you need to stay focused.</h2>
+          </div>
+          <p>From internet to hygiene, every detail is planned to make your daily study routine easy, safe and productive.</p>
+        </div>
+
+        <div class="facility-grid">
+          <article class="facility-card">
+            <div class="facility-icon"><i class="bi bi-wifi"></i></div>
+            <h3>Fast WiFi</h3>
+            <p>Reliable high-speed internet for online classes, test series, research and digital notes.</p>
+          </article>
+
+          <article class="facility-card">
+            <div class="facility-icon"><i class="bi bi-snow"></i></div>
+            <h3>Air Conditioner</h3>
+            <p>Comfortable AC study area for long sitting hours in every season.</p>
+          </article>
+
+          <article class="facility-card">
+            <div class="facility-icon"><i class="bi bi-droplet-half"></i></div>
+            <h3>Cold & Normal Water</h3>
+            <p>Clean drinking water available so students can stay hydrated while studying.</p>
+          </article>
+
+          <article class="facility-card">
+            <div class="facility-icon"><i class="bi bi-cup-hot"></i></div>
+            <h3>Lunch Area</h3>
+            <p>Separate lunch space to keep the study zone peaceful and distraction-free.</p>
+          </article>
+
+          <article class="facility-card">
+            <div class="facility-icon"><i class="bi bi-shield-check"></i></div>
+            <h3>Full CCTV Security</h3>
+            <p>Security camera coverage for a safer environment and student peace of mind.</p>
+          </article>
+
+          <article class="facility-card">
+            <div class="facility-icon"><i class="bi bi-stars"></i></div>
+            <h3>Hygienic Space</h3>
+            <p>Daily cleaning practices with focus on hygiene across the entire library.</p>
+          </article>
+
+          <article class="facility-card">
+            <div class="facility-icon"><i class="bi bi-badge-wc"></i></div>
+            <h3>Clean Washroom</h3>
+            <p>Properly maintained, clean washroom facility for students and visitors.</p>
+          </article>
+
+          <article class="facility-card">
+            <div class="facility-icon"><i class="bi bi-volume-mute"></i></div>
+            <h3>Silent Study Zone</h3>
+            <p>Disciplined self-learning atmosphere for serious preparation and reading.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-card">
+            <span class="eyebrow"><i class="bi bi-person-heart"></i>About Owners</span>
+            <h2>Managed with care by local owners.</h2>
+            <p>
+              Genius Library 2.0 is owned and managed by Aditya Singh Chauhan and Shubham Singh with a simple goal: provide students a neat, safe and comfortable place to learn consistently.
+            </p>
+            <p>
+              The library focuses on easy access, disciplined sitting, clean facilities and a calm environment for school, college and competitive exam preparation.
+            </p>
+
+            <div class="owner-list">
+              <div class="owner-chip">
+                <span class="mini-avatar">A</span>
+                <span>
+                  <b>Aditya Singh Chauhan</b>
+                  <span>Owner & Library Manager</span>
+                </span>
+              </div>
+              <div class="owner-chip">
+                <span class="mini-avatar">S</span>
+                <span>
+                  <b>Shubham Singh</b>
+                  <span>Owner & Operations</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-panel">
+              <h3>Visit Details</h3>
+              <div class="detail-list">
+                <div class="detail-item">
+                  <i class="bi bi-building"></i>
+                  <span><b>Library Name</b>Genius Library 2.0</span>
+                </div>
+                <div class="detail-item">
+                  <i class="bi bi-clock"></i>
+                  <span><b>Timing</b>8:00 AM to 8:00 PM, 7 days a week</span>
+                </div>
+                <div class="detail-item">
+                  <i class="bi bi-telephone"></i>
+                  <span><b>Contact Number</b><a href="tel:+919792088457">9792088457</a></span>
+                </div>
+                <div class="detail-item">
+                  <i class="bi bi-geo-alt"></i>
+                  <span><b>Address</b>JIO OFFICE, Airforce Road, Bargadi, Bakshi Ka Talab, Lucknow, Uttar Pradesh 226201</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-panel">
+              <h3>Best For</h3>
+              <div class="detail-list">
+                <div class="detail-item">
+                  <i class="bi bi-mortarboard"></i>
+                  <span><b>Students</b>School, college and daily self-study learners.</span>
+                </div>
+                <div class="detail-item">
+                  <i class="bi bi-journal-check"></i>
+                  <span><b>Aspirants</b>Competitive exam preparation in a silent zone.</span>
+                </div>
+                <div class="detail-item">
+                  <i class="bi bi-laptop"></i>
+                  <span><b>Online Learning</b>WiFi support for digital study and test series.</span>
+                </div>
+                <div class="detail-item">
+                  <i class="bi bi-book"></i>
+                  <span><b>Readers</b>Calm environment to read, revise and focus.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="pricing" id="plans">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow"><i class="bi bi-chair"></i>Seat Options</span>
+          <h2>Choose your study routine.</h2>
+          <p>Contact the library for latest seat availability and fee details. Plans below are shown as helpful examples for enquiry.</p>
+        </div>
+
+        <div class="plans">
+          <article class="plan">
+            <h3>Daily Visit</h3>
+            <div class="price">Call <small>for fee</small></div>
+            <p>Good for trial visits and short-term study.</p>
+            <ul>
+              <li><i class="bi bi-check-circle-fill"></i>Quiet study seating</li>
+              <li><i class="bi bi-check-circle-fill"></i>Drinking water access</li>
+              <li><i class="bi bi-check-circle-fill"></i>Clean washroom</li>
+            </ul>
+            <button class="btn btn-outline" type="button" data-open-modal style="width:100%; color:#fff8eb; border-color:rgba(255,255,255,.22);">Ask Availability</button>
+          </article>
+
+          <article class="plan featured">
+            <span class="badge">Popular</span>
+            <h3>Monthly Seat</h3>
+            <div class="price">Best <small>for aspirants</small></div>
+            <p>Ideal for consistent preparation and daily self-learning.</p>
+            <ul>
+              <li><i class="bi bi-check-circle-fill"></i>Fixed study routine</li>
+              <li><i class="bi bi-check-circle-fill"></i>Fast WiFi + AC comfort</li>
+              <li><i class="bi bi-check-circle-fill"></i>Lunch area access</li>
+              <li><i class="bi bi-check-circle-fill"></i>CCTV secured space</li>
+            </ul>
+            <button class="btn btn-primary" type="button" data-open-modal style="width:100%;">Book Visit</button>
+          </article>
+
+          <article class="plan">
+            <h3>Group Enquiry</h3>
+            <div class="price">Seats <small>limited</small></div>
+            <p>For friends or study groups who want seats together.</p>
+            <ul>
+              <li><i class="bi bi-check-circle-fill"></i>Student-friendly setup</li>
+              <li><i class="bi bi-check-circle-fill"></i>Peaceful study discipline</li>
+              <li><i class="bi bi-check-circle-fill"></i>Easy location access</li>
+            </ul>
+            <a class="btn btn-gold" href="https://wa.me/919792088457?text=Hello%20Genius%20Library%202.0%2C%20I%20want%20to%20enquire%20about%20group%20seats." target="_blank" rel="noopener" style="width:100%;">WhatsApp Now</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow"><i class="bi bi-images"></i>Library Experience</span>
+            <h2>A clean, focused space for serious study.</h2>
+          </div>
+          <p>Explore the key areas and features that make Genius Library 2.0 comfortable for students.</p>
+        </div>
+
+        <div class="gallery-wrap" aria-label="Library feature slider">
+          <div class="slider" id="slider">
+            <div class="slide">
+              <div class="slide-art"><i class="bi bi-book"></i></div>
+              <div class="slide-content">
+                <h3>Silent Study Zone</h3>
+                <p>Dedicated self-learning environment with a calm atmosphere for reading, revision and competitive exam preparation.</p>
+              </div>
+            </div>
+            <div class="slide">
+              <div class="slide-art"><i class="bi bi-snow"></i></div>
+              <div class="slide-content">
+                <h3>AC Comfort</h3>
+                <p>Air-conditioned sitting helps students stay comfortable and focused during long study hours.</p>
+              </div>
+            </div>
+            <div class="slide">
+              <div class="slide-art"><i class="bi bi-shield-lock"></i></div>
+              <div class="slide-content">
+                <h3>Security & Hygiene</h3>
+                <p>Full CCTV camera coverage, proper cleaning and clean washroom facility for safe daily use.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="dots" id="dots" aria-label="Slider dots"></div>
+
+          <div class="slider-controls">
+            <button class="circle-btn" type="button" id="prevSlide" aria-label="Previous slide"><i class="bi bi-arrow-left"></i></button>
+            <button class="circle-btn" type="button" id="nextSlide" aria-label="Next slide"><i class="bi bi-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" id="reviews">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow"><i class="bi bi-google"></i>Student Reviews</span>
+          <h2>Trusted by local learners.</h2>
+          <p>Share your experience after visiting Genius Library 2.0. Here are sample student-style reviews.</p>
+        </div>
+
+        <div class="review-grid">
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>Very peaceful place for study. WiFi and AC facility makes long sitting comfortable. Best for self-study.</p>
+            <div class="reviewer">
+              <span>R</span>
+              <div>
+                <b>Rahul Kumar</b>
+                <small>Student</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>Clean environment, proper washroom and drinking water facility. Owners are helpful and maintain discipline.</p>
+            <div class="reviewer">
+              <span>P</span>
+              <div>
+                <b>Priya Singh</b>
+                <small>Aspirant</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>Good location near Airforce Road, safe library with CCTV. Recommended for competitive exam preparation.</p>
+            <div class="reviewer">
+              <span>A</span>
+              <div>
+                <b>Aman Verma</b>
+                <small>Reader</small>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="faq-contact">
+          <div class="faq-box">
+            <span class="eyebrow"><i class="bi bi-question-circle"></i>FAQs</span>
+            <h2>Quick answers</h2>
+
+            <div class="faq-list">
+              <div class="faq-item open">
+                <button class="faq-q" type="button">What are the library timings? <i class="bi bi-chevron-down"></i></button>
+                <div class="faq-a"><p>Genius Library 2.0 is open every day from 8:00 AM to 8:00 PM.</p></div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-q" type="button">Is WiFi available? <i class="bi bi-chevron-down"></i></button>
+                <div class="faq-a"><p>Yes, fast WiFi is available for students for online learning and study needs.</p></div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-q" type="button">Is the library safe? <i class="bi bi-chevron-down"></i></button>
+                <div class="faq-a"><p>Yes, the library has CCTV camera security and a managed environment.</p></div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-q" type="button">How can I check seat availability? <i class="bi bi-chevron-down"></i></button>
+                <div class="faq-a"><p>You can call or WhatsApp on 9792088457, or fill the enquiry form on this website.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-box">
+            <span class="eyebrow"><i class="bi bi-send-check"></i>Enquiry</span>
+            <h2>Book a visit or ask for a seat.</h2>
+            <p style="color:var(--muted); margin:0;">Fill this quick form. You can also directly call or WhatsApp the library.</p>
+
+            <form id="enquiryForm" novalidate>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="name">Your Name</label>
+                  <input id="name" name="name" type="text" placeholder="Enter full name" required>
+                  <span class="error-text">Please enter your name.</span>
+                </div>
+
+                <div class="field">
+                  <label for="phone">Mobile Number</label>
+                  <input id="phone" name="phone" type="tel" placeholder="10 digit mobile number" required>
+                  <span class="error-text">Please enter a valid 10 digit number.</span>
+                </div>
+
+                <div class="field">
+                  <label for="interest">Interested In</label>
+                  <select id="interest" name="interest" required>
+                    <option value="">Select option</option>
+                    <option>Daily Visit</option>
+                    <option>Monthly Seat</option>
+                    <option>Group Enquiry</option>
+                    <option>General Information</option>
+                  </select>
+                  <span class="error-text">Please select an option.</span>
+                </div>
+
+                <div class="field">
+                  <label for="time">Preferred Visit Time</label>
+                  <select id="time" name="time" required>
+                    <option value="">Select time</option>
+                    <option>Morning</option>
+                    <option>Afternoon</option>
+                    <option>Evening</option>
+                  </select>
+                  <span class="error-text">Please select visit time.</span>
+                </div>
+
+                <div class="field full">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message" placeholder="Tell us your requirement"></textarea>
+                </div>
+
+                <div class="field full">
+                  <button class="btn btn-primary" type="submit"><i class="bi bi-whatsapp"></i>Send Enquiry on WhatsApp</button>
+                  <div class="success-msg" id="successMsg">Thank you! Opening WhatsApp with your enquiry.</div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="map-card">
+          <div class="map-placeholder" aria-label="Map location placeholder">
+            <div class="map-pin"><i class="bi bi-geo-alt-fill"></i></div>
+          </div>
+          <div class="map-details">
+            <span class="eyebrow"><i class="bi bi-geo-alt"></i>Directions</span>
+            <h3>Find Genius Library 2.0</h3>
+            <div class="detail-list">
+              <div class="detail-item">
+                <i class="bi bi-map"></i>
+                <span><b>Address</b>JIO OFFICE, Airforce Road, Bargadi, Bakshi Ka Talab, Lucknow, Bargadi Magath, Uttar Pradesh 226201</span>
+              </div>
+              <div class="detail-item">
+                <i class="bi bi-clock-history"></i>
+                <span><b>Hours</b>Open 7 days a week, closes at 8:00 PM</span>
+              </div>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:22px;">
+              <a class="btn btn-gold" href="https://www.google.com/maps/search/?api=1&query=JIO%20OFFICE%20AIRFORCE%20ROAD%20Bargadi%20Bakshi%20Ka%20Talab%20Lucknow%20226201" target="_blank" rel="noopener"><i class="bi bi-signpost"></i>Open Maps</a>
+              <a class="btn btn-outline" href="tel:+919792088457"><i class="bi bi-telephone"></i>Call 9792088457</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="#home">
+            <span class="brand-mark"><i class="bi bi-book-half"></i></span>
+            <span>
+              <span class="brand-title" style="color:#fff7e8;">Genius Library 2.0</span>
+              <span class="brand-sub" style="color:#d5c3a6;">Self Learning Space</span>
+            </span>
+          </a>
+          <p style="margin-top:16px; max-width:460px;">A clean, secure and comfortable self-study library in Bargadi, Bakshi Ka Talab, Lucknow.</p>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <div class="footer-links">
+            <a href="#facilities">Facilities</a>
+            <a href="#about">Owners</a>
+            <a href="#plans">Seat Enquiry</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <div class="footer-links">
+            <a href="tel:+919792088457"><i class="bi bi-telephone"></i> 9792088457</a>
+            <a href="https://wa.me/919792088457" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=JIO%20OFFICE%20AIRFORCE%20ROAD%20Bargadi%20Bakshi%20Ka%20Talab%20Lucknow%20226201" target="_blank" rel="noopener"><i class="bi bi-geo-alt"></i> Directions</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Genius Library 2.0. All rights reserved.</span>
+        <span>Owned by Aditya Singh Chauhan & Shubham Singh</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-actions" aria-label="Quick contact actions">
+    <button class="float-action top-btn" id="topBtn" type="button" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+    <a class="float-action call" href="tel:+919792088457" aria-label="Call Genius Library"><i class="bi bi-telephone-fill"></i></a>
+    <a class="float-action whatsapp" href="https://wa.me/919792088457?text=Hello%20Genius%20Library%202.0%2C%20I%20want%20to%20enquire%20about%20a%20study%20seat." target="_blank" rel="noopener" aria-label="WhatsApp Genius Library"><i class="bi bi-whatsapp"></i></a>
+  </div>
+
+  <div class="modal-overlay" id="visitModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="modal-close" type="button" id="modalClose" aria-label="Close modal"><i class="bi bi-x"></i></button>
+      <h2 id="modalTitle">Book a library visit</h2>
+      <p>Send a quick WhatsApp message to check seat availability and visit timing.</p>
+
+      <form id="modalForm" novalidate>
+        <div class="form-grid">
+          <div class="field full">
+            <label for="modalName">Name</label>
+            <input id="modalName" type="text" placeholder="Your name" required>
+            <span class="error-text">Please enter your name.</span>
+          </div>
+          <div class="field full">
+            <label for="modalPhone">Mobile Number</label>
+            <input id="modalPhone" type="tel" placeholder="10 digit mobile number" required>
+            <span class="error-text">Please enter a valid mobile number.</span>
+          </div>
+          <div class="field full">
+            <label for="modalPlan">Requirement</label>
+            <select id="modalPlan" required>
+              <option value="">Select requirement</option>
+              <option>Monthly Seat</option>
+              <option>Daily Visit</option>
+              <option>Group Seats</option>
+              <option>Fee Details</option>
+            </select>
+            <span class="error-text">Please select your requirement.</span>
+          </div>
+          <div class="field full">
+            <button class="btn btn-primary" type="submit"><i class="bi bi-whatsapp"></i>Continue on WhatsApp</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = [...document.querySelectorAll('main section[id], #home')];
+    const topBtn = document.getElementById('topBtn');
+    const modal = document.getElementById('visitModal');
+    const modalClose = document.getElementById('modalClose');
+    const openModalButtons = document.querySelectorAll('[data-open-modal]');
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('show');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuBtn.innerHTML = isOpen ? '<i class="bi bi-x-lg"></i>' : '<i class="bi bi-list"></i>';
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('show');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.innerHTML = '<i class="bi bi-list"></i>';
+      });
+    });
+
+    function setActiveNav() {
+      let current = 'home';
+      document.querySelectorAll('section[id]').forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 120 && rect.bottom >= 120) current = section.id;
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+      topBtn.style.display = window.scrollY > 560 ? 'grid' : 'none';
+    }
+
+    window.addEventListener('scroll', setActiveNav, { passive: true });
+    setActiveNav();
+
+    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    function openModal() {
+      modal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => document.getElementById('modalName').focus(), 50);
+    }
+
+    function closeModal() {
+      modal.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    openModalButtons.forEach(btn => btn.addEventListener('click', openModal));
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('show')) closeModal();
+    });
+
+    const faqItems = document.querySelectorAll('.faq-item');
+    function updateFaqHeights() {
+      faqItems.forEach(item => {
+        const answer = item.querySelector('.faq-a');
+        answer.style.maxHeight = item.classList.contains('open') ? answer.scrollHeight + 'px' : '0px';
+      });
+    }
+    faqItems.forEach(item => {
+      item.querySelector('.faq-q').addEventListener('click', () => {
+        faqItems.forEach(other => {
+          if (other !== item) other.classList.remove('open');
+        });
+        item.classList.toggle('open');
+        updateFaqHeights();
+      });
+    });
+    window.addEventListener('resize', updateFaqHeights);
+    updateFaqHeights();
+
+    const slider = document.getElementById('slider');
+    const slides = document.querySelectorAll('.slide');
+    const dotsWrap = document.getElementById('dots');
+    let slideIndex = 0;
+    let sliderTimer;
+
+    slides.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = 'dot';
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Go to slide ' + (index + 1));
+      dot.addEventListener('click', () => goToSlide(index));
+      dotsWrap.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    function goToSlide(index) {
+      slideIndex = (index + slides.length) % slides.length;
+      slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === slideIndex));
+      resetSliderTimer();
+    }
+
+    document.getElementById('nextSlide').addEventListener('click', () => goToSlide(slideIndex + 1));
+    document.getElementById('prevSlide').addEventListener('click', () => goToSlide(slideIndex - 1));
+
+    function resetSliderTimer() {
+      clearInterval(sliderTimer);
+      sliderTimer = setInterval(() => goToSlide(slideIndex + 1), 5200);
+    }
+
+    goToSlide(0);
+
+    let touchStartX = 0;
+    slider.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX, { passive: true });
+    slider.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 45) goToSlide(slideIndex + (diff > 0 ? 1 : -1));
+    }, { passive: true });
+
+    function validateField(field) {
+      const input = field.querySelector('input, textarea, select');
+      if (!input || !input.hasAttribute('required')) return true;
+      let valid = input.value.trim().length > 0;
+      if (input.type === 'tel') {
+        valid = /^[6-9]\d{9}$/.test(input.value.trim());
+      }
+      field.classList.toggle('error', !valid);
+      return valid;
+    }
+
+    function setupForm(form, buildMessage, afterSubmit) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fields = [...form.querySelectorAll('.field')];
+        const valid = fields.map(validateField).every(Boolean);
+        if (!valid) return;
+
+        const message = buildMessage();
+        const url = 'https://wa.me/919792088457?text=' + encodeURIComponent(message);
+        if (afterSubmit) afterSubmit();
+        window.open(url, '_blank', 'noopener');
+      });
+
+      form.querySelectorAll('input, select, textarea').forEach(input => {
+        input.addEventListener('input', () => {
+          const field = input.closest('.field');
+          if (field) validateField(field);
+        });
+        input.addEventListener('blur', () => {
+          const field = input.closest('.field');
+          if (field) validateField(field);
+        });
+      });
+    }
+
+    setupForm(
+      document.getElementById('enquiryForm'),
+      () => {
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const interest = document.getElementById('interest').value;
+        const time = document.getElementById('time').value;
+        const msg = document.getElementById('message').value.trim();
+        return `Hello Genius Library 2.0,\n\nMy name is ${name}.\nMobile: ${phone}\nInterested in: ${interest}\nPreferred visit time: ${time}\nMessage: ${msg || 'Please share seat availability and fee details.'}`;
+      },
+      () => {
+        const success = document.getElementById('successMsg');
+        success.style.display = 'block';
+        setTimeout(() => success.style.display = 'none', 5000);
+      }
+    );
+
+    setupForm(
+      document.getElementById('modalForm'),
+      () => {
+        const name = document.getElementById('modalName').value.trim();
+        const phone = document.getElementById('modalPhone').value.trim();
+        const plan = document.getElementById('modalPlan').value;
+        return `Hello Genius Library 2.0,\n\nI want to book a visit/check availability.\nName: ${name}\nMobile: ${phone}\nRequirement: ${plan}`;
+      },
+      closeModal
+    );
+  </script>
+</body>
+</html>
